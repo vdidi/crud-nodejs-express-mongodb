@@ -1,7 +1,7 @@
-var mongoose = require('mongoose')
-var Schema  = mongoose.Schema
+const mongoose = require('mongoose')
+const Schema  = mongoose.Schema
 
-var ProdutoSchema = new Schema({
+const ProdutoSchema = new Schema({
     nome: {
         type: String,
         required: true
@@ -9,7 +9,7 @@ var ProdutoSchema = new Schema({
     preco: {
         type: Number,
         required: true 
-    },
+    },  
     descricao: {
         type: String,
         required: false
