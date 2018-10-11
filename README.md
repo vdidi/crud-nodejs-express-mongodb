@@ -30,3 +30,10 @@ Step 2:
   "descricao" : "This is my description"
 }
 ```
+To run tests:
+==
+
+```
+npm test
+
+```
