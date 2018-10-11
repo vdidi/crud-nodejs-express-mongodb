@@ -5,9 +5,9 @@ exports.post = (req, res) =>{
     const produto = new Produto(req.body)
     produto.save()
     .then((result) => {
-        res.send({message: "Produto cadastrado com sucesso!", result})
+        res.status(201).send(result)
     })
     .catch((err) => {
-        res.send({message: "Ocorreu um erro ao cadastrar o produto!", err})
+        res.status(400).send({message: "Ocorreu um erro ao cadastrar o produto!", err})
     })
 }

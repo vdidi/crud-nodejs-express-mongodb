@@ -6,15 +6,15 @@ exports.get_one = (req, res) => {
         Produto.findById(req.params.id)
         .then((data)=>{
             if(data){
-                res.send(data)
+                res.status(200).send(data)
             }else{
-                res.send('This product does not exist')
+                res.status(400).send('This product does not exist')
             }
         })
         .catch((err)=>{
-            res.send(`Wrong parameters ${err}`)
+            res.status(400).send(`Wrong parameters ${err}`)
         })
     }else{
-        res.send(400,'Missing id parameter')
+        res.status(400).send('Missing id parameter')
     }
 }
