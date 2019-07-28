@@ -8,7 +8,7 @@
  */
 
  //Configurar o setup da aplicação
- //Chamadas dos pacote
+ //Chamadas dos pacotes
  require('dotenv').config()
  const env = process.env.NODE_ENV
  const port = process.env.PORT || 3001
@@ -16,6 +16,26 @@
  const app = express()
  const bodyParser = require('body-parser')
  const mongoose = require('mongoose')
+ const redis = require('redis')
+ const client = redis.createClient();
+ 
+ // if you'd like to select database 3, instead of 0 (default), call
+ // client.select(3, function() { /* ... */ });
+  
+ client.on("error", function (err) {
+     console.log("Error " + err);
+ });
+  
+ client.set("string key", "string val", redis.print);
+ client.hset("hash key", "hashtest 1", "some value", redis.print);
+ client.hset(["hash key", "hashtest 2", "some other value"], redis.print);
+ client.hkeys("hash key", function (err, replies) {
+     console.log(replies.length + " replies:");
+     replies.forEach(function (reply, i) {
+         console.log("    " + i + ": " + reply);
+     });
+     client.quit();
+ });
 
  const Models = require('./models/index')
 
